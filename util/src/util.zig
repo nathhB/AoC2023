@@ -7,7 +7,7 @@ pub fn readFileLines(allocator: std.mem.Allocator) ![][]const u8 {
 
     var buf_reader = std.io.bufferedReader(file.reader());
     var in_stream = buf_reader.reader();
-    var buf: [1024]u8 = undefined;
+    var buf: [32000]u8 = undefined;
     var lineList = std.ArrayList([]const u8).init(allocator);
     defer lineList.deinit();
 
