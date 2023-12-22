@@ -19,16 +19,16 @@ fn tiltNorth(map: [][]const u8) i32 {
         for (row, 0..width) |rock, x| {
             if (rock == 'O') {
                 var y2 = y;
-                var toto: usize = 0;
+                var rocks: usize = 0;
 
                 while (y2 >= 1) {
                     if (map[y2 - 1][x] == '#') break;
-                    if (map[y2 - 1][x] == 'O') toto += 1;
+                    if (map[y2 - 1][x] == 'O') rocks += 1;
 
                     y2 -= 1;
                 }
 
-                const rockLoad = height - (y2 + toto);
+                const rockLoad = height - (y2 + rocks);
 
                 load += @intCast(rockLoad);
             }
@@ -36,14 +36,4 @@ fn tiltNorth(map: [][]const u8) i32 {
     }
 
     return load;
-}
-
-fn printMap(map: [][]const u8) void {
-    for (map) |row| {
-        for (row) |rock| {
-            std.debug.print("{c}", .{rock});
-        }
-
-        std.debug.print("\n", .{});
-    }
 }
